@@ -1,4 +1,7 @@
-USE PRACTICE_TASK_DB;
+CREATE DATABASE PRODUCT_TASK;
+
+USE PRODUCT_TASK;
+
 
 --CREATE TABLE
 CREATE TABLE Product
@@ -13,6 +16,7 @@ CREATE TABLE Product
 TRUNCATE TABLE Product;
 
 SELECT * FROM Product;
+
 --1st value
 INSERT INTO Product (ProductType, BrandName, Price, DiscountedPrice)
 VALUES ('ELECTRONICS', 'SONY', 10000, 9900);
@@ -87,11 +91,11 @@ WHERE ProductID = 1;
 SELECT * FROM Product;
 --TASKS
 --TASK-1 COUNT OF TOTAL PRODUCTS
-SELECT COUNT(*) 
+SELECT COUNT(*) AS TotalProducCount
 FROM Product AS TotalProducts;
 
 --TASK-2 COUNT OF ELECTRONICS PRODUCTS
-SELECT COUNT(*)
+SELECT COUNT(*) TotalElectronicProducts
 FROM Product  product
 WHERE product.ProductType = 'ELECTRONICS';
 
@@ -153,3 +157,41 @@ SELECT TOP(1) *
 FROM Product product
 WHERE product.ProductType = 'MEDICAL'
 ORDER BY product.ProductID DESC;
+
+
+-- 1. ProductType (Id, ProductType)
+
+-- 1 Electronic
+-- 2 Grocery
+-- 3 Bakery
+
+
+-- 2. BrandName (Id, BrandName)
+
+-- 1 LG
+-- 2 Panasonic
+-- 3 Britania
+-- 4 Balaji
+-- 5 Amul
+-- 6 Lays
+
+
+-- 3. Product (Id, ProductName, ProductTypeId)
+
+-- 1. AC 1
+-- 2. TV 1
+-- 3. Wafers 2
+
+
+
+-- 3. BrandProductMapping (MappingId,ProductId,BrandId,ActualPrice)
+
+-- 1 1 2
+-- 2 1 1
+-- 3 3 4 , 10
+-- 4 3 6 , 20
+
+-- BrandDiscountMapping (MappingId, BrandProductMappingId, Discount(%),startdate, enddate NULLABLE)
+-- 1 4 5% '16-May', '20-May'
+-- 2 3 2% '16-May', NULL
+
